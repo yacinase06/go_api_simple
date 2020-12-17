@@ -1,5 +1,5 @@
 # Rest api in Golang
-![GitHub Release](https://github.com/krol3/go_api_simple/releases)
+![GitHub Release](https://img.shields.io/github/release/krol3/go_api_simple.svg?logo=github)
 [![Go Report Card](https://goreportcard.com/badge/github.com/krol3/go_api_simple)](https://goreportcard.com/report/github.com/krol3/go_api_simple)
 [![GoDoc](https://godoc.org/github.com/aquasecurity/fanal?status.svg)](https://godoc.org/github.com/aquasecurity/fanal)
 [![codecov](https://codecov.io/gh/aquasecurity/trivy/branch/main/graph/badge.svg)](https://codecov.io/gh/aquasecurity/trivy)
