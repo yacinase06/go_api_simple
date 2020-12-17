@@ -5,54 +5,33 @@ on:
     # Publish `master` as Docker `latest` image.
     branches:
       - main
-
+    paths:
+      - 'Dockerfile'
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
-
-  # Run tests for any PRs.
-  pull_request:
-
-env:
-  # TODO: Change variable to your image's name.
-  IMAGE_NAME: image
-
 jobs:
-  # Run tests.
-  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Run tests
-        run: |
-          if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
-          else
-            docker build . --file Dockerfile
-          fi
-
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
   push:
-    # Ensure test job passes before pushing image.
-    needs: test
-
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     if: github.event_name == 'push'
 
     steps:
-      - uses: actions/checkout@v2
-
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
+        env:
+          REPOSITORY: krol
+          PROJECT: go_api
+          BRANCH: main
+        run: docker build . --file Dockerfile --tag ${REPOSITORY}/${PROJECT}:${BRANCH}
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
+echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login docker.io --username ${{ secrets.DOCKERHUB_USER }} --password-stdin
       - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
@@ -74,3 +53,7 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+      - name: Log out from docker.io registry
+        if: ${{ always() }}
+        run: |
+          docker logout docker.io

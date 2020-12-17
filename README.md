@@ -1,5 +1,5 @@
 # Rest api in Golang
-
+![Release](https://github.com/krol3/go_api_simple/workflows/Release/badge.svg)
 ## Setting in Docker
 
 ```
