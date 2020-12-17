@@ -7,8 +7,6 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-18.04
-    env:
-      IMAGE_TAG: ${{ github.event.inputs.tag }}
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
@@ -32,6 +30,8 @@ jobs:
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
+        env:
+          IMAGE_TAG: ${{ github.event.inputs.tag }}        
         with:
           context: ./
           file: ./Dockerfile
