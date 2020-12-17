@@ -1,7 +1,12 @@
 # Rest api in Golang
-![Release](https://github.com/krol3/go_api_simple/workflows/Release/badge.svg)
+![GitHub Release](https://github.com/krol3/go_api_simple/releases)
 [![Go Report Card](https://goreportcard.com/badge/github.com/krol3/go_api_simple)](https://goreportcard.com/report/github.com/krol3/go_api_simple)
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/krol3/go_api_simple/blob/main/LICENSE)
+[![GoDoc](https://godoc.org/github.com/aquasecurity/fanal?status.svg)](https://godoc.org/github.com/aquasecurity/fanal)
+[![codecov](https://codecov.io/gh/aquasecurity/trivy/branch/main/graph/badge.svg)](https://codecov.io/gh/aquasecurity/trivy)
+![Test](https://github.com/krol3/go_api_simple/workflows/Test/badge.svg)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/krol3/go_api_simple/blob/main/LICENSE)
+![Test](https://github.com/aquasecurity/fanal/workflows/Test/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/aquasecurity/fanal)](https://goreportcard.com/report/github.com/aquasecurity/fanal)
 
 ## Setting in Docker
 
