@@ -1,0 +1,21 @@
+name: Go
+on: [push, pull_request]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Set up Go 1.15
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.15
+      id: go
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v1
+    - name: Lint
+      uses: golangci/golangci-lint-action@v2
+      with:
+        version: v1.31
+    - name: Test
+      run: |
+        go test -v ./...

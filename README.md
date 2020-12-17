@@ -1,5 +1,6 @@
 # Rest api in Golang
 ![Release](https://github.com/krol3/go_api_simple/workflows/Release/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/krol3/go_api_simple)](https://goreportcard.com/report/github.com/krol3/go_api_simple)
 ## Setting in Docker
 
 ```
