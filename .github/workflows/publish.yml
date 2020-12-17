@@ -7,6 +7,8 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-18.04
+    env:
+      IMAGE_TAG: ${{ github.event.inputs.tag }}
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
@@ -35,7 +37,7 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags:  krol/api_simple:latest
+          tags:  krol/go_api:$IMAGE_TAG
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
