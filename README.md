@@ -13,6 +13,7 @@
 ```
 make build
 make run
+make tests
 ```
 
 ## Testing
