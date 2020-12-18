@@ -12,3 +12,5 @@
 *.out
 
 go_api
+
+coverage.txt
