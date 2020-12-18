@@ -1,0 +1,28 @@
+name: Publish 
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  deploy:
+    name: Publish to Amazon ECR
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.ECR_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.ECR_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Publish
+        env:
+          IMAGE_TAG: ${{ github.event.inputs.tag }}
+        run: |
+          docker build -t krol/go_api_simple:$IMAGE_TAG .
+          docker tag krol/go_api_simple::$IMAGE_TAG public.ecr.aws/v4f3f9r2/krol/go_api_simple:$IMAGE_TAG
+          docker push public.ecr.aws/v4f3f9r2/krol/go_api_simple:$IMAGE_TAG
