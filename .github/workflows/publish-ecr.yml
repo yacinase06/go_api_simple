@@ -23,6 +23,6 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.event.inputs.tag }}
         run: |
-          docker build -t krol/go_api_simple:$IMAGE_TAG .
-          docker tag krol/go_api_simple::$IMAGE_TAG public.ecr.aws/v4f3f9r2/krol/go_api_simple:$IMAGE_TAG
+          docker build -t krol/go_api_simple:latest .
+          docker tag krol/go_api_simple:latest public.ecr.aws/v4f3f9r2/krol/go_api_simple:$IMAGE_TAG
           docker push public.ecr.aws/v4f3f9r2/krol/go_api_simple:$IMAGE_TAG
