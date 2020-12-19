@@ -7,6 +7,8 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-18.04
+    env:
+      REP_NAME: krol/go_api_simple
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
@@ -24,20 +26,17 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
-
       - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: krol/go_api
+          images: $REP_NAME
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
-
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -49,10 +48,8 @@ jobs:
           push: true
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
-            ghcr.io/krol3/go_api_simple:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           labels: ${{ steps.docker_meta.outputs.labels }}
-
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
