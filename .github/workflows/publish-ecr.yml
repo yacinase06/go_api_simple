@@ -29,8 +29,9 @@ jobs:
         env:
           IMAGE_TAG: ${{steps.vars.outputs.tag}}
           REP_NAME: krol/go_api_simple
+          ALIAS: v4f3f9r2
         run: |
-          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v4f3f9r2
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/$ALIAS
           docker build -t $REP_NAME:$IMAGE_TAG .
-          docker tag $REP_NAME:$IMAGE_TAG public.ecr.aws/v4f3f9r2/$REP_NAME:$IMAGE_TAG
-          docker push public.ecr.aws/v4f3f9r2/$REP_NAME:$IMAGE_TAG
+          docker tag $REP_NAME:$IMAGE_TAG public.ecr.aws/$ALIAS/$REP_NAME:$IMAGE_TAG
+          docker push public.ecr.aws/$ALIAS/$REP_NAME:$IMAGE_TAG
