@@ -33,7 +33,7 @@ jobs:
         with:
           images: krol/go_api_simple
           tag-semver: |
-            {{major}}.{{minor}}
+            {{version}}
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
