@@ -33,7 +33,6 @@ jobs:
         with:
           images: krol/go_api_simple
           tag-semver: |
-            {{version}}
             {{major}}.{{minor}}
       - name: Build and push
         id: docker_build
