@@ -28,8 +28,9 @@ jobs:
       - name: Publish to ECR
         env:
           IMAGE_TAG: ${{steps.vars.outputs.tag}}
+          REP_NAME: krol/go_api_simple
         run: |
           aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v4f3f9r2
-          docker build -t krol/go_api_simple:latest .
-          docker tag krol/go_api_simple:latest public.ecr.aws/v4f3f9r2/krol/go_api_simple:$IMAGE_TAG
-          docker push public.ecr.aws/v4f3f9r2/krol/go_api_simple:$IMAGE_TAG
+          docker build -t $REP_NAME:$IMAGE_TAG .
+          docker tag $REP_NAME:$IMAGE_TAG public.ecr.aws/v4f3f9r2/$REP_NAME:$IMAGE_TAG
+          docker push public.ecr.aws/v4f3f9r2/$REP_NAME:$IMAGE_TAG
