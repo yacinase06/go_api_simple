@@ -7,8 +7,6 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-18.04
-    env:
-      REP_NAME: krol/go_api_simple
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
@@ -33,7 +31,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: $REP_NAME
+          images: krol/go_api_simple
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
