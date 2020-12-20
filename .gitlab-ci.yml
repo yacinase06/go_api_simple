@@ -1,6 +1,6 @@
 include:
   - template: Dependency-Scanning.gitlab-ci.yml
-  
+
 stages:
   - test
 
