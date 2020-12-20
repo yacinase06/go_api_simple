@@ -3,7 +3,6 @@ on:
   push:
     tags:
       - "v*"
-
 jobs:
   deploy:
     name: Publish to Amazon ECR
@@ -35,4 +34,3 @@ jobs:
           docker build -t $REP_NAME:$IMAGE_TAG .
           docker tag $REP_NAME:$IMAGE_TAG public.ecr.aws/$ALIAS/$REP_NAME:$IMAGE_TAG
           docker push public.ecr.aws/$ALIAS/$REP_NAME:$IMAGE_TAG
-
