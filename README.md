@@ -7,6 +7,7 @@
 [![Go Doc][go-doc-img]][go-doc]
 ![Code Coverage][code-cov]
 [![License][license-img]][license]
+[![GitHub Super-Linter](https://github.com/krol3/go_api_simple/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 [download]: https://img.shields.io/github/downloads/krol3/go_api_simple/total?logo=github
 [release-img]: https://img.shields.io/github/release/krol3/go_api_simple.svg?logo=github
