@@ -1,0 +1,3 @@
+FROM scratch AS bin
+COPY go-api-simple .
+ENTRYPOINT ["go-api-simple"]
