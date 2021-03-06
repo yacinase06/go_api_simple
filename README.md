@@ -1,4 +1,4 @@
-# Rest api in Golang
+# GOlang Rest api in Golang
 
 [![GitHub Release][release-img]][release]
 ![Downloads][download]
@@ -37,6 +37,5 @@ curl http://localhost:8080/events/1
 
 ## Resources
 
-[Restful api](https://medium.com/the-andela-way/build-a-restful-json-api-with-golang-85a83420c9da)
-
+[Build a RESTful JSON API with GOlang](https://medium.com/the-andela-way/build-a-restful-json-api-with-golang-85a83420c9da)
 
