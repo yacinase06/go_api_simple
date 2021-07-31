@@ -92,6 +92,7 @@ func homeLink(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
+	fmt.Println("Hello Brazil !!")
 	router.HandleFunc("/", homeLink)
 	router.HandleFunc("/event", createEvent).Methods("POST")
 	router.HandleFunc("/events", getEvents).Methods("GET")
